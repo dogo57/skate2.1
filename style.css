@@ -1,0 +1,311 @@
+/* style.css ORIGINAL - SEM BACKGROUND TEXTURIZADO */
+
+/* --- REGISTRO DAS FONTES --- */
+@font-face {
+    font-family: 'Berzulis Guze';
+    src: url('Berzulis-GUZE-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Solitus';
+    src: url('Solitus.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- DEFINIÇÃO DE VARIÁVEIS E ESTILOS GLOBAIS --- */
+:root {
+    --primary-color: #e63946;
+    --dark-bg: #0a0a0a;
+    --light-bg: #1a1a1a;
+    --text-color: #f0f0f0;
+    --text-secondary: #aaa;
+    --border-color: #2c2c2c;
+    --display-font: 'Berzulis Guze', sans-serif;
+    --body-font: 'Solitus', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    margin: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    text-transform: uppercase;
+}
+
+/* --- HEADER E NAVEGAÇÃO --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.4s ease;
+}
+
+.main-header.scrolled {
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.logo {
+    font-family: var(--display-font);
+    font-size: 2.2em;
+    font-weight: normal;
+    color: var(--text-color);
+    letter-spacing: 2px;
+    transition: text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.main-nav a {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    transition: color 0.3s, opacity 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.main-header.scrolled .main-nav a:hover {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* --- SEÇÕES PRINCIPAIS --- */
+.hero-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 10, 10, 0.4) 0%,
+        transparent 30%,
+        transparent 60%,
+        var(--dark-bg) 100%
+    );
+}
+
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+}
+
+.hero-title { font-family: var(--display-font); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: normal; margin: 0 0 10px; }
+.hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); }
+
+.btn-primary {
+    font-family: var(--body-font);
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    border: 2px solid var(--primary-color);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.products-section, .team-section, .newsletter-section { text-align: center; padding: 60px 40px; }
+.newsletter-section { background-color: var(--light-bg); padding-top: 80px; padding-bottom: 80px;}
+
+h2 {
+    font-family: var(--body-font);
+    font-size: 1.8em;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; text-align: center; }
+
+/* SEÇÃO DOS CARDS DE PRODUTO */
+.product-card {
+    background-color: var(--light-bg);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.product-card:hover p {
+    color: var(--primary-color);
+}
+
+.product-card.visible { opacity: 1; transform: translateY(0); }
+.product-card img { max-width: 100%; height: auto; transition: transform 0.4s ease; }
+.product-card:hover img { transform: scale(1.05); }
+.product-card h3 { font-family: var(--body-font); font-size: 1.2em; margin: 20px 0 10px; }
+.product-card p {
+    font-family: var(--body-font);
+    color: var(--text-secondary);
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0;
+    transition: color 0.4s ease;
+}
+
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; justify-items: center; }
+.team-member img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border-color); margin-bottom: 15px; transition: border-color 0.4s ease; }
+.team-member:hover img { border-color: var(--primary-color); }
+.team-member h3 { font-family: var(--body-font); font-size: 1.3em; }
+
+.newsletter-section p { font-family: var(--body-font); color: var(--text-secondary); margin-bottom: 30px; }
+.newsletter-form { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.newsletter-form input { font-family: var(--body-font); background-color: var(--dark-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 15px; width: 300px; font-size: 1em; text-transform: uppercase; transition: border-color 0.3s ease; }
+.newsletter-form input:focus { outline: none; border-color: var(--primary-color); }
+.newsletter-form button { font-family: var(--body-font); background-color: var(--primary-color); color: #fff; border: 2px solid var(--primary-color); padding: 15px 30px; cursor: pointer; font-size: 1em; font-weight: bold; text-transform: uppercase; transition: background-color 0.3s, color 0.3s; }
+.newsletter-form button:hover { background-color: transparent; color: var(--primary-color); }
+
+/* --- RODAPÉ --- */
+.main-footer { text-align: center; padding: 40px; margin-top: 40px; border-top: 1px solid var(--border-color); color: #888; }
+.footer-links { margin-bottom: 15px; }
+.footer-links a { font-family: var(--body-font); font-size: 0.9em; color: #888; margin: 0 10px; text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--primary-color); }
+
+/* --- MENU MOBILE E RESPONSIVIDADE --- */
+.mobile-menu-icon { display: none; cursor: pointer; }
+.bar1, .bar2, .bar3 { width: 25px; height: 3px; background-color: white; margin: 5px 0; transition: 0.4s; }
+.change .bar1 { transform: rotate(-45deg) translate(-6px, 6px); }
+.change .bar2 { opacity: 0; }
+.change .bar3 { transform: rotate(45deg) translate(-6px, -8px); }
+@media (max-width: 900px) { .product-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); } }
+@media (max-width: 768px) {
+    .main-nav { display: none; flex-direction: column; position: absolute; top: 68px; right: 0; width: 100%; background-color: var(--dark-bg); }
+    .main-nav.active { display: flex; }
+    .main-nav a { text-align: center; padding: 15px; margin-left: 0; border-bottom: 1px solid var(--border-color); }
+    .mobile-menu-icon { display: block; }
+}
+
+/* --- ESTILO ADICIONAL PARA LINKS DE PRODUTO --- */
+.product-card-link {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Faz o link herdar a cor do texto do pai */
+    display: block; /* Garante que o link ocupe o espaço do card */
+}
+
+#mural-section {
+    padding-top: 80px; /* Mais espaço no topo */
+}
+
+/* A parede onde os stickers serão colados */
+#sticker-mural {
+    background-image: url('texture.jpg'); /* << USAREMOS SUA TEXTURA! */
+    background-size: cover; /* Cobre toda a área */
+    background-position: center;
+    border: 2px solid var(--border-color);
+    width: 100%;
+    height: 60vh; /* Altura de 60% da tela */
+    position: relative; /* ESSENCIAL para posicionar os stickers */
+    cursor: crosshair; /* Muda o cursor para indicar que é uma área de interação */
+    overflow: hidden; /* Garante que os stickers não saiam da área */
+    margin-top: 20px;
+}
+
+/* O adesivo já colado na parede */
+.placed-sticker {
+    position: absolute; /* Posição absoluta DENTRO do mural */
+    width: 100px; /* Tamanho do sticker */
+    height: auto;
+    user-select: none; /* Impede que o usuário arraste a imagem */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+}
+
+.placed-sticker:hover {
+    transform: scale(1.1) rotate(5deg); /* Efeito legal ao passar o mouse */
+    z-index: 10;
+}
+
+
+/* A área para escolher os stickers */
+#sticker-palette {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espaço entre os itens */
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+/* Cada opção de sticker na paleta */
+.sticker-option {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background-color: var(--light-bg);
+    border: 2px solid var(--border-color);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Estilo para quando um sticker for selecionado */
+.sticker-option.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+    transform: scale(1.1);
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O título também será preenchido dinamicamente -->
+    <title>Carregando Produto... - Rua Skate Shop</title>
+    
+    <link rel="icon" href="image.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="produto.css"> 
+</head>
+<body>
+
+    <header class="main-header">
+        <h1 class="logo">RUA</h1>
+        <nav class="main-nav">
+            <a href="index.html#shapes">SHAPES</a>
+            <a href="index.html#roupas">ROUPAS</a>
+            <a href="index.html#acessorios">ACESSÓRIOS</a>
+        </nav>
+        <div class="mobile-menu-icon">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-page-container">
+            
+            <div class="product-image-gallery">
+                <!-- A imagem será inserida aqui pelo JS -->
+                <img id="product-image" src="" alt="Imagem do produto">
+            </div>
+
+            <div class="product-details">
+                <!-- Os detalhes serão inseridos aqui -->
+                <h1 id="product-title" class="product-title"></h1>
+                <p id="product-price" class="product-price"></p>
+                <p id="product-description" class="product-description"></p>
+                
+                <button class="btn-buy">Comprar Agora</button>
+
+                <a href="index.html" class="back-link">← Voltar para a loja</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="#">Contato</a>
+            <a href="#">Sobre Nós</a>
+            <a href="#">Política de Devolução</a>
+        </div>
+        <p>© 2024 Rua Skate Shop</p>
+    </footer>
+
+    <!-- SCRIPT PRINCIPAL PARA MENU E OUTROS -->
+    <script src="script.js"></script>
+    <!-- NOSSO "BANCO DE DADOS" -->
+    <script src="produtos.js"></script>
+    <!-- SCRIPT QUE FAZ A MÁGICA DE PREENCHER A PÁGINA -->
+    <script src="pagina-produto.js"></script> 
+</body>
+</html>

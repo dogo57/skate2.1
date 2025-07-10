@@ -1,0 +1,105 @@
+/* --- ESTILOS DA PÁGINA DE PRODUTO --- */
+
+.product-page-container {
+    display: flex; /* Coloca a imagem e os detalhes lado a lado */
+    max-width: 1200px;
+    margin: 60px auto; /* Centraliza o container na página */
+    padding: 20px;
+    gap: 50px; /* Espaço entre a imagem e os detalhes */
+    align-items: flex-start; /* Alinha os itens no topo */
+}
+
+/* --- Lado da Imagem --- */
+.product-image-gallery {
+    flex: 1; /* Faz a imagem ocupar o espaço disponível */
+    max-width: 50%;
+}
+
+.product-image-gallery img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color);
+}
+
+/* --- Lado dos Detalhes --- */
+.product-details {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-family: var(--display-font);
+    font-size: 2.8em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+.product-price {
+    font-family: var(--body-font);
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.product-description {
+    font-family: var(--body-font);
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-transform: none; /* Deixa o texto da descrição normal, não maiúsculo */
+}
+
+.btn-buy {
+    font-family: var(--body-font);
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+    padding: 18px 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%; /* Botão ocupa a largura toda */
+    margin-bottom: 30px;
+}
+
+.btn-buy:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.back-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+}
+
+/* --- AJUSTES PARA TELAS MENORES (MOBILE) --- */
+@media (max-width: 768px) {
+    .product-page-container {
+        flex-direction: column; /* Coloca a imagem em cima dos detalhes */
+        margin-top: 20px;
+        gap: 30px;
+    }
+
+    .product-image-gallery,
+    .product-details {
+        max-width: 100%; /* Ocupam a largura total */
+    }
+
+    .product-title {
+        font-size: 2.2em;
+    }
+}
